@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features | Code Tech</title>
+  <style>
+    :root { --bg:#f5f7fb; --ink:#172033; --muted:#657089; --line:#dfe5ef; --primary:#2557d6; --radius:8px; }
+    * { box-sizing:border-box; } body { margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:linear-gradient(135deg,#eef3ff 0%,var(--bg) 52%,#fff 100%); } a { color:inherit; text-decoration:none; }
+    .shell { width:min(1120px, calc(100% - 32px)); margin:0 auto; } .topbar { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:26px 0; } .brand { display:inline-flex; align-items:center; gap:12px; font-weight:800; } .brand-mark { display:grid; width:42px; height:42px; place-items:center; border-radius:8px; color:#fff; background:var(--primary); } .nav { display:flex; flex-wrap:wrap; gap:18px; color:var(--muted); font-size:14px; } .nav a:hover,.active { color:var(--primary); }
+    .intro { padding:52px 0 34px; max-width:780px; } h1 { margin:0; font-size:clamp(38px,6vw,64px); line-height:1; } p { color:var(--muted); line-height:1.65; } .lead { font-size:18px; } .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; padding:10px 0 78px; } .card { padding:24px; border:1px solid var(--line); border-radius:var(--radius); background:rgba(255,255,255,.82); } .card strong { display:block; margin-bottom:8px; font-size:18px; } .footer { display:flex; justify-content:space-between; gap:18px; padding:26px 0 34px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+    @media (max-width:840px){ .grid{grid-template-columns:1fr;} } @media (max-width:520px){ .topbar{align-items:flex-start; flex-direction:column;} .footer{flex-direction:column;} }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">CT</span><span>Code Tech</span></a>
+    <nav class="nav"><a href="index.html">Home</a><a href="login.html">Login</a><a href="register.html">Register</a><a class="active" href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></nav>
+  </header>
+  <main class="shell">
+    <section class="intro">
+      <h1>Everything needed for a clean social auth preview.</h1>
+      <p class="lead">These pages explain the main value of the authentication interface before full backend integration.</p>
+    </section>
+    <section class="grid" aria-label="Features">
+      <article class="card"><strong>Google login</strong><p>Show users a familiar way to access the application with a trusted identity provider.</p></article>
+      <article class="card"><strong>GitHub login</strong><p>Useful for developer-focused platforms, dashboards, and technical client portals.</p></article>
+      <article class="card"><strong>LinkedIn login</strong><p>Helpful for professional communities, hiring tools, business portals, and CRM apps.</p></article>
+      <article class="card"><strong>Email fallback</strong><p>Keep a traditional email and password path available for every user.</p></article>
+      <article class="card"><strong>Responsive pages</strong><p>The layout adapts for desktop, tablet, and mobile client previews.</p></article>
+      <article class="card"><strong>Static handoff</strong><p>No installation, database, package manager, or backend is required to review the design.</p></article>
+    </section>
+  </main>
+  <footer class="shell footer"><span>Code Tech Social Auth</span><span>Features page</span></footer>
+</body>
+</html>

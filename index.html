@@ -3,480 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code Tech | Social Auth UI</title>
+  <title>Code Tech | Social Auth</title>
   <style>
-    :root {
-      --bg: #f5f7fb;
-      --panel: #ffffff;
-      --ink: #172033;
-      --muted: #657089;
-      --line: #dfe5ef;
-      --primary: #2557d6;
-      --primary-dark: #173b9f;
-      --google: #ffffff;
-      --github: #111827;
-      --linkedin: #0a66c2;
-      --radius: 8px;
-      --shadow: 0 22px 55px rgba(33, 45, 76, 0.14);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(37, 87, 214, 0.14), transparent 32rem),
-        linear-gradient(135deg, #eef3ff 0%, var(--bg) 52%, #ffffff 100%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .site-shell {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 28px 0;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-    }
-
-    .brand-mark {
-      display: grid;
-      width: 42px;
-      height: 42px;
-      place-items: center;
-      border-radius: var(--radius);
-      color: #ffffff;
-      background: var(--primary);
-      box-shadow: 0 12px 28px rgba(37, 87, 214, 0.28);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav a:hover {
-      color: var(--primary);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(330px, 0.8fr);
-      align-items: center;
-      gap: 48px;
-      padding: 46px 0 64px;
-    }
-
-    .hero-copy {
-      max-width: 620px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
-      padding: 7px 12px;
-      border: 1px solid rgba(37, 87, 214, 0.18);
-      border-radius: 999px;
-      color: var(--primary-dark);
-      background: rgba(255, 255, 255, 0.72);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 760px;
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 0.98;
-      letter-spacing: 0;
-    }
-
-    .lead {
-      margin: 22px 0 0;
-      max-width: 600px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 14px;
-      margin-top: 32px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border: 1px solid transparent;
-      border-radius: var(--radius);
-      font-weight: 700;
-      transition: 0.18s ease;
-    }
-
-    .button.primary {
-      color: #ffffff;
-      background: var(--primary);
-      box-shadow: 0 14px 26px rgba(37, 87, 214, 0.24);
-    }
-
-    .button.secondary {
-      border-color: var(--line);
-      color: var(--ink);
-      background: #ffffff;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-    }
-
-    .auth-card {
-      padding: 30px;
-      border: 1px solid rgba(223, 229, 239, 0.86);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: var(--shadow);
-    }
-
-    .auth-card h2 {
-      margin: 0 0 8px;
-      font-size: 26px;
-    }
-
-    .auth-card p {
-      margin: 0 0 24px;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .auth-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .auth-option {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      width: 100%;
-      min-height: 54px;
-      padding: 0 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #ffffff;
-      color: var(--ink);
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .auth-option span:first-child {
-      display: grid;
-      width: 28px;
-      height: 28px;
-      place-items: center;
-      border-radius: 6px;
-      font-weight: 800;
-    }
-
-    .auth-option.google span:first-child {
-      border: 1px solid var(--line);
-      background: var(--google);
-      color: #d93025;
-    }
-
-    .auth-option.github {
-      color: #ffffff;
-      background: var(--github);
-      border-color: var(--github);
-    }
-
-    .auth-option.github span:first-child {
-      background: #ffffff;
-      color: var(--github);
-    }
-
-    .auth-option.linkedin {
-      color: #ffffff;
-      background: var(--linkedin);
-      border-color: var(--linkedin);
-    }
-
-    .auth-option.linkedin span:first-child {
-      background: #ffffff;
-      color: var(--linkedin);
-    }
-
-    .divider {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 12px;
-      margin: 24px 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: "";
-      height: 1px;
-      background: var(--line);
-    }
-
-    .form-grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    label {
-      display: grid;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    input {
-      width: 100%;
-      min-height: 46px;
-      padding: 0 13px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      color: var(--ink);
-      background: #ffffff;
-      font: inherit;
-    }
-
-    input:focus {
-      outline: 3px solid rgba(37, 87, 214, 0.14);
-      border-color: var(--primary);
-    }
-
-    .submit {
-      width: 100%;
-      min-height: 48px;
-      margin-top: 6px;
-      border: 0;
-      border-radius: var(--radius);
-      color: #ffffff;
-      background: var(--primary);
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .small-note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      padding: 0 0 64px;
-    }
-
-    .feature {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.78);
-    }
-
-    .feature strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 17px;
-    }
-
-    .feature p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 26px 0 34px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    @media (max-width: 840px) {
-      .nav {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 28px;
-      }
-
-      .auth-card {
-        max-width: 520px;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .site-shell {
-        width: min(100% - 22px, 1120px);
-      }
-
-      .topbar {
-        padding: 20px 0;
-      }
-
-      h1 {
-        font-size: 42px;
-      }
-
-      .lead {
-        font-size: 16px;
-      }
-
-      .hero-actions,
-      .button {
-        width: 100%;
-      }
-
-      .auth-card,
-      .feature {
-        padding: 20px;
-      }
-
-      .footer {
-        flex-direction: column;
-      }
-    }
+    :root { --bg: #f5f7fb; --panel: #fff; --ink: #172033; --muted: #657089; --line: #dfe5ef; --primary: #2557d6; --dark: #111827; --radius: 8px; --shadow: 0 20px 50px rgba(33,45,76,.14); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: linear-gradient(135deg,#eef3ff 0%,var(--bg) 52%,#fff 100%); }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 0; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; }
+    .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; border-radius: var(--radius); color: #fff; background: var(--primary); }
+    .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; color: var(--muted); font-size: 14px; }
+    .nav a:hover, .nav .active { color: var(--primary); }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .85fr); align-items: center; gap: 48px; padding: 54px 0 70px; }
+    .eyebrow { display: inline-flex; margin-bottom: 18px; padding: 7px 12px; border: 1px solid rgba(37,87,214,.18); border-radius: 999px; color: #173b9f; background: rgba(255,255,255,.72); font-size: 13px; font-weight: 700; }
+    h1 { margin: 0; max-width: 760px; font-size: clamp(42px, 7vw, 74px); line-height: .99; }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 42px); }
+    p { color: var(--muted); line-height: 1.65; }
+    .lead { max-width: 610px; margin: 22px 0 0; font-size: 18px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border: 1px solid transparent; border-radius: var(--radius); font-weight: 700; }
+    .primary { color: #fff; background: var(--primary); box-shadow: 0 14px 26px rgba(37,87,214,.24); }
+    .secondary { border-color: var(--line); background: #fff; }
+    .panel { padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.92); box-shadow: var(--shadow); }
+    .auth-options { display: grid; gap: 12px; margin-top: 24px; }
+    .auth-button { display: flex; align-items: center; gap: 14px; min-height: 54px; padding: 0 16px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; font-weight: 700; }
+    .badge { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 6px; background: #eef3ff; color: var(--primary); font-size: 13px; }
+    .github { color: #fff; background: var(--dark); border-color: var(--dark); }
+    .linkedin { color: #fff; background: #0a66c2; border-color: #0a66c2; }
+    .github .badge, .linkedin .badge { background: #fff; color: var(--dark); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 0 0 66px; }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.8); }
+    .card strong { display: block; margin-bottom: 8px; font-size: 17px; }
+    .footer { display: flex; justify-content: space-between; gap: 18px; padding: 26px 0 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    @media (max-width: 840px) { .hero, .grid { grid-template-columns: 1fr; } .nav { gap: 12px; } }
+    @media (max-width: 520px) { .topbar { align-items: flex-start; flex-direction: column; } .actions, .button { width: 100%; } .panel, .card { padding: 20px; } .footer { flex-direction: column; } }
   </style>
 </head>
 <body>
-  <header class="site-shell topbar">
-    <a class="brand" href="#">
-      <span class="brand-mark">CT</span>
-      <span>Code Tech</span>
-    </a>
+  <header class="shell topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">CT</span><span>Code Tech</span></a>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#login">Login</a>
-      <a href="#features">Features</a>
-      <a href="#contact">Contact</a>
+      <a class="active" href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <main class="site-shell">
+  <main class="shell">
     <section class="hero">
-      <div class="hero-copy">
+      <div>
         <span class="eyebrow">Secure social authentication interface</span>
         <h1>Sign in faster with trusted social accounts.</h1>
-        <p class="lead">
-          Code Tech gives your users a clean way to access your platform through Google,
-          GitHub, LinkedIn, or email. This is a static HTML client preview ready to publish
-          on GitHub Pages.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#login">View Login</a>
-          <a class="button secondary" href="#features">See Features</a>
+        <p class="lead">Code Tech helps clients preview a clean authentication experience for Google, GitHub, LinkedIn, and email sign in. This version is static HTML and ready for GitHub Pages.</p>
+        <div class="actions">
+          <a class="button primary" href="login.html">View Login</a>
+          <a class="button secondary" href="features.html">Explore Features</a>
         </div>
       </div>
 
-      <section class="auth-card" id="login" aria-labelledby="login-title">
-        <h2 id="login-title">Welcome back</h2>
-        <p>Choose a provider or use your email address to continue.</p>
-
-        <div class="auth-list" aria-label="Social login options">
-          <button class="auth-option google" type="button">
-            <span>G</span>
-            <span>Continue with Google</span>
-          </button>
-          <button class="auth-option github" type="button">
-            <span>GH</span>
-            <span>Continue with GitHub</span>
-          </button>
-          <button class="auth-option linkedin" type="button">
-            <span>in</span>
-            <span>Continue with LinkedIn</span>
-          </button>
+      <aside class="panel">
+        <h2>Social Auth</h2>
+        <p>Give users a quick, familiar way to access your product without making signup feel heavy.</p>
+        <div class="auth-options">
+          <a class="auth-button" href="login.html"><span class="badge">G</span> Continue with Google</a>
+          <a class="auth-button github" href="login.html"><span class="badge">GH</span> Continue with GitHub</a>
+          <a class="auth-button linkedin" href="login.html"><span class="badge">in</span> Continue with LinkedIn</a>
         </div>
-
-        <div class="divider">or</div>
-
-        <form class="form-grid" action="#" method="post">
-          <label>
-            Email address
-            <input type="email" name="email" placeholder="client@example.com" required>
-          </label>
-          <label>
-            Password
-            <input type="password" name="password" placeholder="Enter your password" required>
-          </label>
-          <button class="submit" type="submit">Sign In</button>
-        </form>
-
-        <p class="small-note">New here? Create an account with any supported provider.</p>
-      </section>
+      </aside>
     </section>
 
-    <section class="features" id="features" aria-label="Social auth features">
-      <article class="feature">
-        <strong>Fast onboarding</strong>
-        <p>Reduce signup friction by allowing users to join with accounts they already trust.</p>
-      </article>
-      <article class="feature">
-        <strong>Clean client preview</strong>
-        <p>Everything is contained in one HTML file, so it can be uploaded directly to GitHub.</p>
-      </article>
-      <article class="feature">
-        <strong>Ready to integrate</strong>
-        <p>The interface can later connect to Laravel, Node, PHP, or any backend auth service.</p>
-      </article>
+    <section class="grid" aria-label="Highlights">
+      <article class="card"><strong>Simple handoff</strong><p>Each page is plain HTML, so your client can open it locally or view it on GitHub Pages.</p></article>
+      <article class="card"><strong>Modern auth flow</strong><p>The screens show social login, email login, registration, and support entry points.</p></article>
+      <article class="card"><strong>Integration ready</strong><p>The design can later connect to Laravel, PHP, Node, or any backend auth service.</p></article>
     </section>
   </main>
 
-  <footer class="site-shell footer" id="contact">
+  <footer class="shell footer">
     <span>Code Tech Social Auth</span>
-    <span>Built for client preview and GitHub publishing.</span>
+    <span>Static HTML client preview</span>
   </footer>
 </body>
 </html>
