@@ -1,91 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code Tech | Social Auth</title>
-  <style>
-    :root { --bg: #f5f7fb; --panel: #fff; --ink: #172033; --muted: #657089; --line: #dfe5ef; --primary: #2557d6; --dark: #111827; --radius: 8px; --shadow: 0 20px 50px rgba(33,45,76,.14); }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: linear-gradient(135deg,#eef3ff 0%,var(--bg) 52%,#fff 100%); }
-    a { color: inherit; text-decoration: none; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 0; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; }
-    .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; border-radius: var(--radius); color: #fff; background: var(--primary); }
-    .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; color: var(--muted); font-size: 14px; }
-    .nav a:hover, .nav .active { color: var(--primary); }
-    .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .85fr); align-items: center; gap: 48px; padding: 54px 0 70px; }
-    .eyebrow { display: inline-flex; margin-bottom: 18px; padding: 7px 12px; border: 1px solid rgba(37,87,214,.18); border-radius: 999px; color: #173b9f; background: rgba(255,255,255,.72); font-size: 13px; font-weight: 700; }
-    h1 { margin: 0; max-width: 760px; font-size: clamp(42px, 7vw, 74px); line-height: .99; }
-    h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 42px); }
-    p { color: var(--muted); line-height: 1.65; }
-    .lead { max-width: 610px; margin: 22px 0 0; font-size: 18px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border: 1px solid transparent; border-radius: var(--radius); font-weight: 700; }
-    .primary { color: #fff; background: var(--primary); box-shadow: 0 14px 26px rgba(37,87,214,.24); }
-    .secondary { border-color: var(--line); background: #fff; }
-    .panel { padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.92); box-shadow: var(--shadow); }
-    .auth-options { display: grid; gap: 12px; margin-top: 24px; }
-    .auth-button { display: flex; align-items: center; gap: 14px; min-height: 54px; padding: 0 16px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; font-weight: 700; }
-    .badge { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 6px; background: #eef3ff; color: var(--primary); font-size: 13px; }
-    .github { color: #fff; background: var(--dark); border-color: var(--dark); }
-    .linkedin { color: #fff; background: #0a66c2; border-color: #0a66c2; }
-    .github .badge, .linkedin .badge { background: #fff; color: var(--dark); }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 0 0 66px; }
-    .card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.8); }
-    .card strong { display: block; margin-bottom: 8px; font-size: 17px; }
-    .footer { display: flex; justify-content: space-between; gap: 18px; padding: 26px 0 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-    @media (max-width: 840px) { .hero, .grid { grid-template-columns: 1fr; } .nav { gap: 12px; } }
-    @media (max-width: 520px) { .topbar { align-items: flex-start; flex-direction: column; } .actions, .button { width: 100%; } .panel, .card { padding: 20px; } .footer { flex-direction: column; } }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code Tech | Phones, Laptops & Accessories</title>
+  <meta name="description" content="Code Tech sells phones, laptops, tablets, and accessories for work, study, gaming, and everyday life." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 <body>
-  <header class="shell topbar">
-    <a class="brand" href="index.html"><span class="brand-mark">CT</span><span>Code Tech</span></a>
-    <nav class="nav" aria-label="Main navigation">
-      <a class="active" href="index.html">Home</a>
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
-      <a href="features.html">Features</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="contact.html">Contact</a>
+  <header class="site-header fixed-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Code Tech</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-lg-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+          <div class="auth-actions">
+            <button class="btn btn-brand" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas"><i class="fa-solid fa-cart-shopping me-2"></i>Cart <span id="cartCount" class="badge rounded-pill text-bg-warning">0</span></button>
+          </div>
+        </div>
+      </div>
     </nav>
   </header>
 
-  <main class="shell">
-    <section class="hero">
-      <div>
-        <span class="eyebrow">Secure social authentication interface</span>
-        <h1>Sign in faster with trusted social accounts.</h1>
-        <p class="lead">Code Tech helps clients preview a clean authentication experience for Google, GitHub, LinkedIn, and email sign in. This version is static HTML and ready for GitHub Pages.</p>
-        <div class="actions">
-          <a class="button primary" href="login.html">View Login</a>
-          <a class="button secondary" href="features.html">Explore Features</a>
-        </div>
-      </div>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas" aria-labelledby="cartCanvasLabel">
+    <div class="offcanvas-header"><h5 class="offcanvas-title" id="cartCanvasLabel">Code Tech Cart</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div>
+    <div class="offcanvas-body">
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-total-row"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+      <div class="cart-payment-actions mt-3"><button class="btn btn-paypal w-100" id="paypalServerCheckout" type="button" disabled><span class="paypal-wordmark"><span>Pay</span><span>Pal</span></span></button><button class="btn btn-outline-primary w-100 mt-2" id="paynowServerCheckout" type="button" disabled>Pay with Paynow</button></div>
+      <div id="paypal-button-container" class="mt-3"></div>
+      <p id="paypalHint" class="small text-muted mt-3">Add products to cart to activate payment checkout.</p>
+    </div>
+  </div>
 
-      <aside class="panel">
-        <h2>Social Auth</h2>
-        <p>Give users a quick, familiar way to access your product without making signup feel heavy.</p>
-        <div class="auth-options">
-          <a class="auth-button" href="login.html"><span class="badge">G</span> Continue with Google</a>
-          <a class="auth-button github" href="login.html"><span class="badge">GH</span> Continue with GitHub</a>
-          <a class="auth-button linkedin" href="login.html"><span class="badge">in</span> Continue with LinkedIn</a>
+  <main>
+    <section id="home" class="hero-section">
+      <div class="swiper heroSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide hero-slide" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80');"><div class="overlay"></div><div class="container hero-content"><h1>Smart Tech for Work, Play, and Everyday Life</h1><p>Shop premium phones, powerful laptops, tablets, and accessories from brands you trust.</p><div class="hero-actions"><a href="products.html" class="btn btn-brand">Shop Products</a><a href="contact.html" class="btn btn-outline-light">Contact Us</a></div></div></div>
+          <div class="swiper-slide hero-slide" style="background-image:url('https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1800&q=80');"><div class="overlay"></div><div class="container hero-content"><h1>Phones, Laptops, and Accessories in One Place</h1><p>Code Tech helps individuals, students, creators, and businesses choose better devices.</p><div class="hero-actions"><a href="services.html" class="btn btn-brand">Our Services</a><a href="products.html" class="btn btn-outline-light">View Deals</a></div></div></div>
         </div>
-      </aside>
+        <div class="swiper-pagination"></div>
+      </div>
     </section>
 
-    <section class="grid" aria-label="Highlights">
-      <article class="card"><strong>Simple handoff</strong><p>Each page is plain HTML, so your client can open it locally or view it on GitHub Pages.</p></article>
-      <article class="card"><strong>Modern auth flow</strong><p>The screens show social login, email login, registration, and support entry points.</p></article>
-      <article class="card"><strong>Integration ready</strong><p>The design can later connect to Laravel, PHP, Node, or any backend auth service.</p></article>
+    <section class="section-space bg-light" id="about">
+      <div class="container"><div class="row align-items-center g-5"><div class="col-lg-6" data-aos="fade-right"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=1200&q=80" class="img-fluid rounded-4 shadow" alt="Code Tech store display" /></div><div class="col-lg-6" data-aos="fade-left"><h2 class="section-title">About Code Tech</h2><p>Code Tech is a modern technology retailer supplying quality smartphones, laptops, tablets, and essential accessories.</p><p>We focus on reliable products, clear recommendations, competitive pricing, and support that helps customers buy with confidence.</p><div class="row text-center g-4 mt-2"><div class="col-4"><h3 class="counter" data-count-target="200" data-count-suffix="+">0</h3><p>Products</p></div><div class="col-4"><h3 class="counter" data-count-target="30" data-count-suffix="+">0</h3><p>Brands</p></div><div class="col-4"><h3 class="counter" data-count-target="300" data-count-suffix="+">0</h3><p>Customers</p></div></div></div></div></div>
+    </section>
+
+    <section class="section-space">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up"><h2 class="section-title">What We Offer</h2><p>Everything you need to buy, upgrade, and support your devices.</p></div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3" data-aos="zoom-in"><div class="service-card"><i class="fa-solid fa-mobile-screen-button"></i><h5>Smartphones</h5><p>Latest iPhone, Samsung, Pixel, Xiaomi, and Android devices.</p></div></div>
+          <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100"><div class="service-card"><i class="fa-solid fa-laptop"></i><h5>Laptops</h5><p>Workstations, ultrabooks, student laptops, and gaming machines.</p></div></div>
+          <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="150"><div class="service-card"><i class="fa-solid fa-tablet-screen-button"></i><h5>Tablets</h5><p>Portable screens for creativity, entertainment, and productivity.</p></div></div>
+          <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200"><div class="service-card"><i class="fa-solid fa-headphones"></i><h5>Accessories</h5><p>Headphones, chargers, monitors, storage, keyboards, and more.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section-space bg-light">
+      <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up"><h2 class="section-title">Featured Products</h2><p>Browse phones by brand, laptops by maker, and everyday accessories.</p></div>
+        <div class="project-filters text-center mb-4" data-aos="fade-up" data-aos-delay="100"><button class="btn filter-btn active" data-filter="all">All</button><button class="btn filter-btn" data-filter="apple-iphones">Apple iPhones</button><button class="btn filter-btn" data-filter="samsung">Samsung</button><button class="btn filter-btn" data-filter="huawei">Huawei</button><button class="btn filter-btn" data-filter="hp">HP</button><button class="btn filter-btn" data-filter="dell">Dell</button><button class="btn filter-btn" data-filter="lenovo">Lenovo</button><button class="btn filter-btn" data-filter="acer">Acer</button><button class="btn filter-btn" data-filter="accessories">Accessories</button></div>
+        <div class="row g-4" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <section class="section-space">
+      <div class="container"><div class="text-center mb-5" data-aos="fade-up"><h2 class="section-title">Customer Testimonials</h2></div><div class="swiper testimonialSwiper" data-aos="fade-up"><div class="swiper-wrapper"></div><div class="swiper-pagination"></div></div></div>
+    </section>
+
+    <section class="section-space cta-section">
+      <div class="container text-center" data-aos="fade-up"><h2 class="section-title text-white">Need Help Choosing Your Next Device?</h2><p class="mb-4">Tell us your budget and use case. We will recommend the right phone, laptop, or accessory bundle.</p><a href="contact.html" class="btn btn-brand">Talk to Code Tech</a></div>
     </section>
   </main>
 
-  <footer class="shell footer">
-    <span>Code Tech Social Auth</span>
-    <span>Static HTML client preview</span>
+  <footer class="site-footer">
+    <div class="container py-5"><div class="row g-4"><div class="col-lg-4"><h5>Code Tech</h5><p>Supplying phones, laptops, tablets, and accessories for modern customers and growing teams.</p></div><div class="col-sm-6 col-lg-2"><h6>Quick Links</h6><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="products.html">Products</a></li></ul></div><div class="col-sm-6 col-lg-3"><h6>Contact</h6><p>Email: panashe@codetech.com</p><p>Phone: +263788203933</p><p>Address: Speke City Mall Corner 2nd and Speke, Shop 21</p></div><div class="col-lg-3"><h6>Follow Us</h6><div class="social-icons"><a href="https://www.tiktok.com/@codetech.zw?_r=1&_t=ZS-97eKOgB5fH8" target="_blank" rel="noopener" aria-label="Code Tech on TikTok"><i class="fab fa-tiktok"></i></a><a href="https://www.instagram.com/codetechnologies.zim?igsh=MWJpZHI3ZnJicXRqdw==" target="_blank" rel="noopener" aria-label="Code Tech on Instagram"><i class="fab fa-instagram"></i></a><a href="https://wa.me/c/263788203933" target="_blank" rel="noopener" aria-label="Code Tech on WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div></div></div>
+    <div class="footer-bottom text-center py-3">&copy; 2026 Code Tech. All rights reserved.</div>
   </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+  <script>window.CodeTechAuth = { loggedIn: true, loginUrl: 'index.html', productsUrl: 'products.html' }; window.CodeTechCheckout = { clearCart: false, paidOrder: null };</script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
